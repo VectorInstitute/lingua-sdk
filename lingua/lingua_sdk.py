@@ -14,7 +14,6 @@ from .utils import get, post, decode_str
 
 JWT_TOKEN_FILE = Path(Path.home() / '.lingua.jwt')
 
-
 class Client:
 
     def __init__(self, gateway_host: str, gateway_port: int, auth_key: Optional[str] = None, verbose: bool = False):
@@ -34,10 +33,13 @@ class Client:
             if JWT_TOKEN_FILE.exists():
                 with open(JWT_TOKEN_FILE, "r") as f:
                     auth_key = f.read()
+                    # Make sure the token is valid before using it. If not, verify_token() will force user to reauthenticate
+                    self._session.auth_key = auth_key
+                    auth_key = self._session.verify_token()
             else:
                 try:
                     print("You must authenticate with your LDAP credentials to use the Lingua service")
-                    auth_key = self.authenticate()
+                    auth_key = self._session.authentication_prompt()
                 except Exception as err:
                     print(err)
                     sys.exit(1)
@@ -47,26 +49,6 @@ class Client:
         self.verbose = verbose
         if self.verbose:
             print(f"Available models: {self.models} \nActive models instances: {self.model_instances}")
-
-
-    def authenticate(self):
-        """Authenticates this user with the gateway service via LDAP"""
-        num_tries = 0
-        while num_tries < 3:
-            username = input("Username: ")
-            password = getpass()
-            result = self._session.authenticate(username, password)
-            if result.status_code == 200:
-                print("Login successful.")
-                auth_key = json.loads(result.text)['token']
-                with open(JWT_TOKEN_FILE, "w") as f:
-                    f.write(auth_key)
-                return auth_key
-            else:
-                print("Authentication failed.")
-                num_tries += 1
-
-        raise Exception("Too many failed login attempts.")
 
     @cached_property
     def models(self):
@@ -121,6 +103,34 @@ class GatewaySession:
         response = requests.post(url, auth=(username, password))
         return response
 
+    def authentication_prompt(self):
+        num_tries = 0
+        while num_tries < 3:
+            username = input("Username: ")
+            password = getpass()
+            result = self.authenticate(username, password)
+            if result.status_code == 200:
+                print("Login successful.")
+                auth_key = json.loads(result.text)['token']
+                with open(JWT_TOKEN_FILE, "w") as f:
+                    f.write(auth_key)
+                return auth_key
+            else:
+                print("Authentication failed.")
+                num_tries += 1
+
+        raise Exception("Too many failed login attempts.")
+
+    def verify_token(self):
+        # Make sure the token is still valid
+        verify_addr = self.create_addr("verify_token")
+        try:
+            post(verify_addr, {}, self.auth_key)
+            return self.auth_key
+        except Exception as err:
+            print("Your access token is invalid or has expired. Please log in again.")
+            return self.authentication_prompt()
+
     def get_models(self):
         url = self.create_addr("models")
         response = get(url)
@@ -132,6 +142,7 @@ class GatewaySession:
         return response
 
     def create_model_instance(self, model_name: str):
+        self.verify_token()
         url = self.create_addr("models/instances")
         body = { "name": model_name }
         response = post(url, body, auth_key=self.auth_key)
@@ -152,7 +163,7 @@ class GatewaySession:
 
     def generate(self, model_instance_id: str, prompt: str, generation_config: Dict):
         """Generates text from the model instance"""
-
+        self.verify_token()
         url = self.create_addr(f"models/instances/{model_instance_id}/generate")
         body = {"prompt": prompt, 'generation_config': generation_config}
 
@@ -162,7 +173,7 @@ class GatewaySession:
 
     def get_activations(self, model_instance_id: str, prompt: str, module_names: List[str], generation_config: Dict):
         """Gets activations from the model instance"""
-
+        self.verify_token()
         url = self.create_addr(f"models/instances/{model_instance_id}/generate_activations")
         body = {"prompt": prompt, "module_names": module_names, "generation_config": generation_config}
 
