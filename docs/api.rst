@@ -1,7 +1,7 @@
 API
 ===
 
-.. currentmodule:: lingua
+.. currentmodule:: kaleidoscope
 
 .. autoclass:: Client
     :members:

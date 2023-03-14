@@ -1,4 +1,4 @@
-# Lingua-SDK
+# Kaleidoscope-SDK
 A user toolkit for analyzing and interfacing with Large Language Models (LLMs)
 
 <!--
@@ -12,8 +12,8 @@ A user toolkit for analyzing and interfacing with Large Language Models (LLMs)
 
 ## Overview
 
-``lingua-sdk`` is a Python module used to interact with large language models
-hosted via the Lingua service (available at https://github.com/VectorInstitute/lingua).
+``kaleidoscope-sdk`` is a Python module used to interact with large language models
+hosted via the Kaleidoscope service (available at https://github.com/VectorInstitute/kaleidoscope).
 It provides a simple interface launch LLMs on an HPC cluster, ask them to
 perform basic features like text generation, but also retrieve intermediate
 information from inside the model such as log probabilities and activations.
@@ -26,7 +26,7 @@ These features are exposed via a few high-level APIs, namely:
 * `get_activations` - Retrieves all activations for a set of modules
 
 Full documentation and API reference are available at
-http://lingua-sdk.readthedocs.io.
+http://kaleidoscope-sdk.readthedocs.io.
 
 
 ## Getting Started
@@ -36,19 +36,19 @@ Requires Python version >= 3.8
 ### Install
 
 ```bash
-python3 -m pip install pylingua
+python3 -m pip install pykaleidoscope
 ```
 or install from source:
 
 ```bash
-pip install git+https://github.com/VectorInstitute/lingua-sdk.git
+pip install git+https://github.com/VectorInstitute/kaleidoscope-sdk.git
 ```
 
 ### Authentication
 
 In order to submit generation jobs, a designated Vector Institute cluster account is required. Please contact the
-[AI Engineering Team](mailto:ai_engineering@vectorinstitute.ai?subject=[Github]%20Lingua)
-in charge of Lingua for more information.
+[AI Engineering Team](mailto:ai_engineering@vectorinstitute.ai?subject=[Github]%20Kaleidoscope)
+in charge of Kaleidoscope for more information.
 
 ### Sample Workflow
 
@@ -57,12 +57,12 @@ on the Vector Institute Vaughan cluster.
 
 ```python
 #!/usr/bin/env python3
-import lingua
+import kaleidoscope
 import time
 
-# Establish a client connection to the Lingua service
+# Establish a client connection to the Kaleidoscope service
 # If you have not previously authenticated with the service, you will be prompted to now
-client = lingua.Client(gateway_host="llm.cluster.local", gateway_port=3001)
+client = kaleidoscope.Client(gateway_host="llm.cluster.local", gateway_port=3001)
 
 # See which models are supported
 client.models
@@ -95,12 +95,12 @@ activations = opt_model.get_activations("What are activations?", requested_activ
 print(activations)
 ```
 
-## [Documentation](https://lingua-sdk.readthedocs.io/)
-More information can be found on the Lingua documentation site.
+## [Documentation](https://kaleidoscope-sdk.readthedocs.io/)
+More information can be found on the Kaleidoscope documentation site.
 
 
 ## Contributing
-Contributing to lingua is welcomed. See [Contributing](https://github.com/VectorInstitute/lingua-sdk/blob/main/doc/CONTRIBUTING.md) for
+Contributing to kaleidoscope is welcomed. See [Contributing](https://github.com/VectorInstitute/kaleidoscope-sdk/blob/main/doc/CONTRIBUTING.md) for
 guidelines.
 
 
@@ -109,7 +109,7 @@ guidelines.
 
 
 ## Citation
-Reference to cite when you use Lingua in a project or a research paper:
+Reference to cite when you use Kaleidoscope in a project or a research paper:
 ```
-Sivaloganathan, J., Coatsworth, M., Willes, J., Choi, M., & Shen, G. (2022). Lingua. http://VectorInstitute.github.io/lingua. computer software, Vector Institute for Artificial Intelligence. Retrieved from https://github.com/VectorInstitute/lingua-sdk.git.
+Sivaloganathan, J., Coatsworth, M., Willes, J., Choi, M., & Shen, G. (2022). Kaleidoscope. http://VectorInstitute.github.io/kaleidoscope. computer software, Vector Institute for Artificial Intelligence. Retrieved from https://github.com/VectorInstitute/kaleidoscope-sdk.git.
 ```

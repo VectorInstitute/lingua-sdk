@@ -1,7 +1,7 @@
 Getting Started
 ===============
 
-Integrate the Lingua SDK into your project quickly!
+Integrate the Kaleidoscope SDK into your project quickly!
 
 Requirements
 ------------
@@ -12,18 +12,18 @@ Requirements
 Installation
 ------------
 
-To install ``lingua-sdk`` from `PyPI <https://pypi.org/project/pylingua/>`_:
+To install ``kaleidoscope-sdk`` from `PyPI <https://pypi.org/project/pykaleidoscope/>`_:
 
     .. code-block:: console
 
-        $ pip install pylingua
+        $ pip install pykaleidoscope
 
-To install ``lingua-sdk`` from source:
+To install ``kaleidoscope-sdk`` from source:
 
     .. code-block:: console
 
-        $ git clone git@github.com:VectorInstitute/lingua-sdk.git
-        $ cd lingua-sdk
+        $ git clone git@github.com:VectorInstitute/kaleidoscope-sdk.git
+        $ cd kaleidoscope-sdk
         $ pip install .
 
 
@@ -34,11 +34,11 @@ This is a minimalist example of the SDK in action.
 
 .. code-block:: python
 
-    import lingua
+    import kaleidoscope
     import time
 
-    # Establish a client connection to the Lingua service
-    client = lingua.Client(gateway_host="llm.cluster.local", gateway_port=3001)
+    # Establish a client connection to the Kaleidoscope service
+    client = kaleidoscope.Client(gateway_host="llm.cluster.local", gateway_port=3001)
 
     # Show all supported models
     client.models
@@ -82,9 +82,9 @@ Users must authenticate using their Vector Institute cluster credentials. This c
 
 .. code-block:: console
 
-    >>> import lingua
-    >>> client = lingua.Client(gateway_host="llm.cluster.local", gateway_port=3001)
-    You must authenticate with your LDAP credentials to use the Lingua service
+    >>> import kaleidoscope
+    >>> client = kaleidoscope.Client(gateway_host="llm.cluster.local", gateway_port=3001)
+    You must authenticate with your LDAP credentials to use the Kaleidoscope service
     Username: <username>
     Password: <password>
 

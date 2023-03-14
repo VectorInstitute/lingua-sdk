@@ -1,4 +1,4 @@
-Lingua-SDK Documentation
+Kaleidoscope-SDK Documentation
 ========================
 
 To build the documentation you will need to have the following packages installed: ``sphinx``, ``sphinx_rtd_theme``,

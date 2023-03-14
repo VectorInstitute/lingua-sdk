@@ -4,18 +4,18 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="pylingua",
+    name="pykaleidoscope",
     version="0.3.0",
     description="A user toolkit for analyzing and interfacing with Large Language Models (LLMs)",
     long_description=long_description,
     long_description_content_type="text/markdown",
     keywords="python nlp machine-learning deep-learning distributed-computing neural-networks tensor llm",
     requires_python=">=3.7",
-    url="https://github.com/VectorInstitute/lingua-sdk",
+    url="https://github.com/VectorInstitute/kaleidoscope-sdk",
     author=["Vector AI Engineering"],
     author_email="ai_engineering@vectorinstitute.ai",
     license="MIT",
-    packages=["lingua"],
+    packages=["kaleidoscope"],
     install_requires=[
         "certifi==2022.12.7",
         "charset-normalizer==3.0.1",

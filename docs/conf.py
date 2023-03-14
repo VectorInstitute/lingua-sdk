@@ -11,7 +11,7 @@ import sys
 
 sys.path.insert(0, pathlib.Path(__file__).parents[1].resolve().as_posix())
 
-project = "Lingua SDK"
+project = "Kaleidoscope SDK"
 copyright = "2023, Willes, Siva, Coatsworth, Choi"
 author = "Willes, Siva, Coatsworth, Choi"
 

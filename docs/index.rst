@@ -1,10 +1,10 @@
-lingua-sdk
+kaleidoscope-sdk
 ==========
 
-Welcome to the **lingua-sdk**!
+Welcome to the **kaleidoscope-sdk**!
 
-``lingua-sdk`` is a Python module used to interact with large language models
-hosted via the Lingua service (available at https://github.com/VectorInstitute/lingua).
+``kaleidoscope-sdk`` is a Python module used to interact with large language models
+hosted via the Kaleidoscope service (available at https://github.com/VectorInstitute/kaleidoscope).
 It provides a simple interface launch LLMs on an HPC cluster, ask them to
 perform basic features like text generation, but also retrieve intermediate
 information from inside the model such as log probabilities and activations.
@@ -26,18 +26,18 @@ These features are exposed via a few high-level APIs, namely:
 
 Contributing
 ------------
-Contributing to lingua is welcomed. See `Contributing <https://github.com/VectorInstitute/lingua-sdk/blob/main/doc/CONTRIBUTING.md>`_ for
+Contributing to kaleidoscope is welcomed. See `Contributing <https://github.com/VectorInstitute/kaleidoscope-sdk/blob/main/doc/CONTRIBUTING.md>`_ for
 guidelines.
 
 License
 -------
 
-``lingua-sdk`` is disributed under the MIT license. See `LICENSE <https://github.com/VectorInstitute/lingua-sdk/blob/main/doc/LICENSE>`_
+``kaleidoscope-sdk`` is disributed under the MIT license. See `LICENSE <https://github.com/VectorInstitute/kaleidoscope-sdk/blob/main/doc/LICENSE>`_
 
 Citation
 --------
-Reference to cite when you use Lingua in a project or a research paper:
+Reference to cite when you use Kaleidoscope in a project or a research paper:
 
 ::
 
-   Sivaloganathan, J., Coatsworth, M., Willes, J., Choi, M., & Shen, G. (2022). Lingua. http://VectorInstitute.github.io/lingua. computer software, Vector Institute for Artificial Intelligence. Retrieved from https://github.com/VectorInstitute/lingua-sdk.git.
+   Sivaloganathan, J., Coatsworth, M., Willes, J., Choi, M., & Shen, G. (2022). Kaleidoscope. http://VectorInstitute.github.io/kaleidoscope. computer software, Vector Institute for Artificial Intelligence. Retrieved from https://github.com/VectorInstitute/kaleidoscope-sdk.git.

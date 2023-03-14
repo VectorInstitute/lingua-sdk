@@ -12,7 +12,7 @@ from urllib.parse import urljoin
 from .hooks import TestForwardHook
 from .utils import get, post, decode_str
 
-JWT_TOKEN_FILE = Path(Path.home() / ".lingua.jwt")
+JWT_TOKEN_FILE = Path(Path.home() / ".kaleidoscope.jwt")
 
 
 class Client:
@@ -23,7 +23,7 @@ class Client:
         auth_key: Optional[str] = None,
         verbose: bool = False,
     ):
-        """Initializes the Lingua client which faciliates communication with the gateway service
+        """Initializes the Kaleidoscope client which faciliates communication with the gateway service
 
         :param gateway_host: The host of the gateway service
         :param gateway_port: The port of the gateway service
@@ -42,7 +42,7 @@ class Client:
             else:
                 try:
                     print(
-                        "You must authenticate with your LDAP credentials to use the Lingua service"
+                        "You must authenticate with your LDAP credentials to use the Kaleidoscope service"
                     )
                     auth_key = self.authenticate()
                 except Exception as err:
@@ -200,7 +200,7 @@ class Model:
     ):
         """Initializes a model instance
 
-        :param client: (Client) Lingua client that this model belongs to
+        :param client: (Client) Kaleidoscope client that this model belongs to
         :param model_name: (str): The name of the model
         """
 

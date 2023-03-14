@@ -1,5 +1,5 @@
-from .lingua_sdk import Client
-from .lingua_sdk import Model
+from .kaleidoscope_sdk import Client
+from .kaleidoscope_sdk import Model
 
 # SDK metadata
 __version__ = "0.3.0"
